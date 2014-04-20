@@ -28,3 +28,11 @@
 
 # "temporary" build files
 /target
+
+# Added by julio@ripollmoreno.com
+/.classpath
+/.project
+/.settings
+/.idea
+/*.iml
+
