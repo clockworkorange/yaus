@@ -1,7 +1,7 @@
 dataSource {
     pooled = true
-    jmxExport = true
-    driverClassName = "org.h2.Driver"
+    driverClassName = "org.hsqldb.jdbcDriver"
+    dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'
     username = "sa"
     password = ""
 }
@@ -17,39 +17,68 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            dbCreate = "off" // one of 'create', 'create-drop', 'update'
+            url = "jdbc:mysql://localhost/yaus"
+            driverClassName = "com.mysql.jdbc.Driver"
+            username = "yaus"
+            password = "yaus"
+            //password = "s1g4"
+            dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'
+            //loggingSql = true
+            properties {
+                maxActive = 50
+                maxIdle = 25
+                minIdle = 5
+                initialSize = 5
+                minEvictableIdleTimeMillis = 60000
+                timeBetweenEvictionRunsMillis = 60000
+                maxWait = 10000
+            }
         }
     }
+
     test {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            dbCreate = "off"
+            url = "jdbc:mysql://localhost/yausDBTest"
+            driverClassName = "com.mysql.jdbc.Driver"
+            username = "yaus"
+            password = "yaus"
+            dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'
+            //loggingSql = true
+            properties {
+                maxActive = 50
+                maxIdle = 25
+                minIdle = 5
+                initialSize = 5
+                minEvictableIdleTimeMillis = 60000
+                timeBetweenEvictionRunsMillis = 60000
+                maxWait = 10000
+            }
         }
     }
+
     production {
+        def dbHost = System.getProperty('db.host', 'localhost')
+        def dbPort = System.getProperty('db.port', '3306')
+        def dbSchema = System.getProperty('db.schema', 'yausDB')
+        def dbUsername = System.getProperty('db.username', 'yaus')
+        def dbPassword = System.getProperty('db.password', 'y4u5')
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            dbCreate = "off"  // disabled to work with legacy databases
+            url = "jdbc:mysql://${dbHost}:${dbPort}/${dbSchema}"
+            driverClassName = 'com.mysql.jdbc.Driver'
+            dialect = 'org.hibernate.dialect.MySQLInnoDBDialect'
+            username = "${dbUsername}"
+            password = "${dbPassword}"
             properties {
-               // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
-               jmxEnabled = true
-               initialSize = 5
-               maxActive = 50
-               minIdle = 5
-               maxIdle = 25
-               maxWait = 10000
-               maxAge = 10 * 60000
-               timeBetweenEvictionRunsMillis = 5000
-               minEvictableIdleTimeMillis = 60000
-               validationQuery = "SELECT 1"
-               validationQueryTimeout = 3
-               validationInterval = 15000
-               testOnBorrow = true
-               testWhileIdle = true
-               testOnReturn = false
-               jdbcInterceptors = "ConnectionState"
-               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
+                maxActive = 50
+                maxIdle = 25
+                minIdle = 5
+                initialSize = 5
+                minEvictableIdleTimeMillis = 60000
+                timeBetweenEvictionRunsMillis = 60000
+                maxWait = 10000
             }
         }
     }
