@@ -13,24 +13,24 @@
         <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
         </g:if>
-        <g:hasErrors bean="${shortLink}">
-            <ul class="errors">
-                <g:eachError bean="${shortLink}" var="error">
-                    <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                </g:eachError>
-            </ul>
-        </g:hasErrors>
+        <g:if test="${shortLink?.hasErrors()}">
+            <g:hasErrors bean="${shortLink}">
+                <div class="errors">
+                    <g:renderErrors bean="${shortLink}" as="list"/>
+                </div>
+            </g:hasErrors>
+        </g:if>
         <div class="fieldcontain ${hasErrors(bean: shortLink, field: 'targetUrl', 'error')} ">
             <label><g:message code="shortLink.targetUrl.label" default="Target Url" /></label>
             <g:textField name="targetUrl" maxlength="2000" style="width:400px;"/>
             <g:submitButton name="create" class="button" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
         </div>
         </br>
-        <div class="shortLinkResult">
-            <g:if test="${shortLink}">
+        <g:if test="${shortLink && !shortLink?.hasErrors()}">
+            <div class="shortLinkResult">
                 <g:message code="shortLink.link.label" default="Link corto: "/> <a href="${shortLink.link}">${shortLink.link}</a>
-            </g:if>
-        </div>
+            </div>
+        </g:if>
     </div>
 </g:form>
 </body>

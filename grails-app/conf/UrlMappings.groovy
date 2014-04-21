@@ -8,6 +8,7 @@ class UrlMappings {
         }
 
         "/"(view:"/shortLink/index")
+        "/$shortUrl"(controller: "shortLink", action: "redirectToTargetUrl", params: [shortUrl: shortUrl])
         "500"(view:'/error')
 	}
 }

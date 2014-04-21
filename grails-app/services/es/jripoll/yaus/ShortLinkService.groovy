@@ -23,12 +23,15 @@ class ShortLinkService {
     def getOrCreateShortLink(targetUrl) {
         def shortLink = ShortLink.findByTargetUrl(targetUrl)
         if(shortLink)
-            "${grailsApplication.config.shortener.domain}$shortLink"
+            shortLink
         else {
-            new ShortLink(
+            shortLink = new ShortLink(
                     targetUrl: targetUrl,
                     link: "${grailsApplication.config.shortener.domain}${generateShortLink()}"
-            ).save(failOnError: true)
+            )
+            shortLink.validate() ?
+                shortLink.save(failOnError: true) :
+                shortLink
         }
     }
 
