@@ -31,8 +31,8 @@ class ShortLinkControllerSpec extends Specification {
 
         where:
         targetUrl          | invocationsToShortLinkService | landingURL
-        'http://osoco.es/' | 1                             | "/shortLink/index"
-        null               | 0                             | "/"
+        'http://osoco.es/' | 1                             | '/shortLink/index'
+        null               | 0                             | '/'
     }
 
     @Unroll

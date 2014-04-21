@@ -12,7 +12,7 @@ class ShortLinkController {
         }
         else {
             flash.message = g.message(code: 'shortLink.targetUrl.empty.message')
-            redirect uri: "/"
+            redirect uri: '/'
         }
     }
 
@@ -22,7 +22,7 @@ class ShortLinkController {
             redirect(url: shortLink.targetUrl)
         else {
             flash.message = g.message(code: 'shortLink.link.empty.message')
-            redirect uri: "/"
+            redirect uri: '/'
         }
     }
 }

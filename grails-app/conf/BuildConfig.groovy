@@ -51,6 +51,7 @@ grails.project.dependency.resolution = {
         // plugins for the compile step
         compile ":scaffolding:2.0.2"
         compile ':cache:1.1.1'
+        compile ":codenarc:0.20"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.9" // or ":hibernate4:4.3.4"
@@ -62,5 +63,19 @@ grails.project.dependency.resolution = {
         test(":spock:0.7") {
             exclude "spock-grails-support"
         }
+    }
+}
+
+// CodeNarc
+codenarc.ruleSetFiles="file:grails-app/conf/CodeNarcRuleSet.groovy"
+codenarc.extraIncludeDirs=['grails-app/jobs']
+codenarc.maxPriority1Violations=0
+codenarc.maxPriority2Violations=2
+codenarc.maxPriority3Violations=3
+codenarc.systemExitOnBuildException=true
+codenarc.reports = {
+    HtmlReport('html') {
+        outputFile = 'target/test-reports/html/CodeNarcReport.html'
+        title = 'CodeNarc Report'
     }
 }
