@@ -117,4 +117,12 @@ log4j = {
 
 shortener {
     chars = ('a'..'z') + ('A'..'Z') + ('0'..'9') + ''
+    environments {
+        development {
+            domain = "http://localhost:8080/yaus/"
+        }
+        production {
+            domain = "http://clientDomain.es/"
+        }
+    }
 }

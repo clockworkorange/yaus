@@ -6,10 +6,15 @@ class ShortLinkController {
     def shortLinkService
 
     def createShortLink = {
-        render(
-                view: 'index',
-                model: [shortLink: shortLinkService.getOrCreateShortLink(params['targetUrl'])]
-        )
+        def targetUrl = params['targetUrl']
+        if(targetUrl) {
+            render(
+                    view: 'index',
+                    model: [shortLink: shortLinkService.getOrCreateShortLink(params['targetUrl'])]
+            )
+        }
+        else
+            redirect(uri: "/")
     }
 
 }

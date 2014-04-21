@@ -239,6 +239,11 @@ fieldset,
 	margin-left: 27%;
 }
 
+.shortLinkResult {
+    background-color:#ffe0e0;
+    text-align: center;
+}
+
 label {
 	cursor: pointer;
 	display: inline-block;

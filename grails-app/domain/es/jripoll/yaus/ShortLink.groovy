@@ -14,7 +14,7 @@ class ShortLink {
 
     static constraints = {
         targetUrl maxSize: 2000, url: true
-        link size: 5..5, unique: true
+        link unique: true
     }
 
     String toString() {

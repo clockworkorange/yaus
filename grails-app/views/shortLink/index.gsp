@@ -7,11 +7,6 @@
 </head>
 <body>
 <a href="#create-shortLink" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<div class="nav">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-    </ul>
-</div>
 <g:form controller="shortLink" action="createShortLink">
     <div id="create-shortLink" class="content">
         <h1><g:message code="default.create.label" args="[entityName]" /></h1>
@@ -27,16 +22,15 @@
         </g:hasErrors>
         <div class="fieldcontain ${hasErrors(bean: shortLink, field: 'targetUrl', 'error')} ">
             <label><g:message code="shortLink.targetUrl.label" default="Target Url" /></label>
-            <g:textField name="targetUrl" maxlength="2000"/>
+            <g:textField name="targetUrl" maxlength="2000" style="width:400px;"/>
+            <g:submitButton name="create" class="button" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
         </div>
         </br>
-
-        <fieldset class="buttons">
-            <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-        </fieldset>
-        <g:if test="${shortLink}">
-            <g:message code="shortLink.link.label" default="TLink corto" /></label>${shortLink.link}
-        </g:if>
+        <div class="shortLinkResult">
+            <g:if test="${shortLink}">
+                <g:message code="shortLink.link.label" default="Link corto: "/> <a href="${shortLink.link}">${shortLink.link}</a>
+            </g:if>
+        </div>
     </div>
 </g:form>
 </body>
