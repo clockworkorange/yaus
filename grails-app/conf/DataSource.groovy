@@ -22,9 +22,6 @@ environments {
             driverClassName = "com.mysql.jdbc.Driver"
             username = "yaus"
             password = "yaus"
-            //password = "s1g4"
-            dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'
-            //loggingSql = true
             properties {
                 maxActive = 50
                 maxIdle = 25
@@ -45,7 +42,6 @@ environments {
             username = "yaus"
             password = "yaus"
             dialect = 'org.hibernate.dialect.MySQL5InnoDBDialect'
-            //loggingSql = true
             properties {
                 maxActive = 50
                 maxIdle = 25
