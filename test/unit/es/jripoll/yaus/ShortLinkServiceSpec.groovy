@@ -44,7 +44,7 @@ class ShortLinkServiceSpec extends UnitSpec {
         shortLinkService.metaClass.convertNumberToBase62 = { number -> convertedNumber }
 
         expect:
-        shortLinkService.generateShortLink() == code
+        shortLinkService.generateCode() == code
 
         where:
         convertedNumber | code
@@ -57,7 +57,7 @@ class ShortLinkServiceSpec extends UnitSpec {
     void "test get or create short link"() {
         given:
         new ShortLink(targetUrl: 'http://osoco.es/', link: 'http://osoco.es/AAAAA').save(failOnError: true)
-        shortLinkService.metaClass.generateShortLink = { shortCode }
+        shortLinkService.metaClass.generateCode = { shortCode }
         def shortLink = shortLinkService.getOrCreateShortLink(targetUrl)
 
         expect:

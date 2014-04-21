@@ -7,9 +7,8 @@ class ShortLinkController {
 
     def createShortLink = {
         def targetUrl = params['targetUrl']
-        if(targetUrl) {
-            render(view: 'index', model: [shortLink: shortLinkService.getOrCreateShortLink(params['targetUrl'])])
-        }
+        if(targetUrl)
+            render view: 'index', model: [shortLink: shortLinkService.getOrCreateShortLink(targetUrl)]
         else {
             flash.message = g.message(code: 'shortLink.targetUrl.empty.message')
             redirect uri: '/'
@@ -19,7 +18,7 @@ class ShortLinkController {
     def redirectToTargetUrl = {
         def shortLink = ShortLink.findByLink("${grailsApplication.config.shortener.domain}${params['shortUrl']}")
         if(shortLink)
-            redirect(url: shortLink.targetUrl)
+            redirect url: shortLink.targetUrl
         else {
             flash.message = g.message(code: 'shortLink.link.empty.message')
             redirect uri: '/'

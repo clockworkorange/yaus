@@ -113,7 +113,7 @@ shortener {
             domain = 'http://clientdomain.es/'
         }
         test {
-            domain = 'http://localhost:8080/yaus/'
+            domain = 'http://clientdomain.es/'
         }
     }
 }

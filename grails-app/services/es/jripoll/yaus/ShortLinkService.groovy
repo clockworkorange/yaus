@@ -14,9 +14,9 @@ class ShortLinkService {
             characters[number]
     }
 
-    def generateShortLink() {
+    def generateCode() {
         def characters = grailsApplication.config.shortener.chars
-        def shortLinkMaxId = getShortLinkMaxId() ?: 0
+        def shortLinkMaxId = getShortLinkMaxId()
         convertNumberToBase62(shortLinkMaxId as Integer).padLeft(
                 grailsApplication.config.shortener.lengthCode, characters[0])
     }
@@ -24,7 +24,7 @@ class ShortLinkService {
     def getOrCreateShortLink(targetUrl) {
         def shortLink =  (ShortLink.findByTargetUrl(targetUrl) ?: new ShortLink(
                 targetUrl: targetUrl,
-                link: "${grailsApplication.config.shortener.domain}${generateShortLink()}"))
+                link: "${grailsApplication.config.shortener.domain}${generateCode()}"))
         if(shortLink.validate())
             shortLink.save(failOnError: true)
 
