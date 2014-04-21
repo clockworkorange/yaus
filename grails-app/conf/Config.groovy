@@ -116,13 +116,18 @@ log4j = {
 }
 
 shortener {
-    chars = ('a'..'z') + ('A'..'Z') + ('0'..'9') + ''
+    chars = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+    lengthCode = 5
     environments {
         development {
             domain = "http://localhost:8080/yaus/"
         }
         production {
-            domain = "http://clientDomain.es/"
+            domain = "http://clientdomain.es/"
+        }
+        test {
+            domain = "http://clientdomain.es/"
         }
     }
 }
+

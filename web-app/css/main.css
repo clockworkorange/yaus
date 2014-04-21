@@ -49,6 +49,7 @@ body {
 
 #grailsLogo {
 	background-color: #abbf78;
+    text-align: center;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -240,7 +241,7 @@ fieldset,
 }
 
 .shortLinkResult {
-    background-color:#ffe0e0;
+    background-color: #ffffe7;
     text-align: center;
 }
 

@@ -4,7 +4,7 @@ import grails.test.spock.IntegrationSpec
 import spock.lang.Unroll
 
 
-class ShortLinkSpec extends IntegrationSpec {
+class ShortLinkIntegrationSpec extends IntegrationSpec {
 
     @Unroll
     void "test SortLink domain class validation"() {

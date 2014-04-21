@@ -18,6 +18,11 @@ class ShortLinkController {
 
     def redirectToTargetUrl = {
         def shortLink = ShortLink.findByLink("${grailsApplication.config.shortener.domain}${params['shortUrl']}")
-        redirect(url: shortLink.targetUrl)
+        if(shortLink)
+            redirect(url: shortLink.targetUrl)
+        else {
+            flash.message = g.message(code: 'shortLink.link.empty.message')
+            redirect uri: "/"
+        }
     }
 }

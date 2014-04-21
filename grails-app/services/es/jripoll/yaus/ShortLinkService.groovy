@@ -16,24 +16,27 @@ class ShortLinkService {
 
     def generateShortLink() {
         def characters = grailsApplication.config.shortener.chars
-        def maxShortLinkId = ShortLink.executeQuery("select max(id) from ShortLink")[0] ?: 0
-        convertNumberToBase62(maxShortLinkId as Integer).padLeft(5, characters[0])
+        def maxShortLinkId = getShortLinkMaxId() ?: 0
+        convertNumberToBase62(maxShortLinkId as Integer).padLeft(
+                grailsApplication.config.shortener.lengthCode, characters[0])
     }
 
     def getOrCreateShortLink(targetUrl) {
-        def shortLink = ShortLink.findByTargetUrl(targetUrl)
-        if(shortLink)
-            shortLink
-        else {
-            shortLink = new ShortLink(
-                    targetUrl: targetUrl,
-                    link: "${grailsApplication.config.shortener.domain}${generateShortLink()}"
-            )
-            shortLink.validate() ?
-                shortLink.save(failOnError: true) :
-                shortLink
-        }
+        def shortLink =  ShortLink.findByTargetUrl(targetUrl) ?:
+            new ShortLink(
+                targetUrl: targetUrl,
+                link: "${grailsApplication.config.shortener.domain}${generateShortLink()}")
+        if(shortLink.validate())
+            shortLink.save(failOnError: true)
+
+        shortLink
     }
 
-
+    def getShortLinkMaxId() {
+        ShortLink.createCriteria().get {
+            projections {
+                max('id')
+            }
+        }
+    }
 }
