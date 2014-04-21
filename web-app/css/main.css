@@ -595,6 +595,43 @@ th:hover, tr:hover {
 	background-image: url(../images/skin/database_save.png);
 }
 
+.createShortLinkButton {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.createLinkButton {
+    background: #48802C;
+    background-image: -webkit-linear-gradient(top, #48802C, #abbf78);
+    background-image: -moz-linear-gradient(top, #48802C, #abbf78);
+    background-image: -ms-linear-gradient(top, #48802C, #abbf78);
+    background-image: -o-linear-gradient(top, #48802C, #abbf78);
+    background-image: linear-gradient(to bottom, #48802C, #abbf78);
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+}
+
+.createLinkButton:hover {
+    background: #52a827;
+    background-image: -webkit-linear-gradient(top, #52a827, #bee061);
+    background-image: -moz-linear-gradient(top, #52a827, #bee061);
+    background-image: -ms-linear-gradient(top, #52a827, #bee061);
+    background-image: -o-linear-gradient(top, #52a827, #bee061);
+    background-image: linear-gradient(to bottom, #52a827, #bee061);
+    text-decoration: none;
+}
+
+.createLinkTextField {
+    border:2px solid #456879;
+    border-radius:10px;
+}
+
 a.skip {
 	position: absolute;
 	left: -9999px;
