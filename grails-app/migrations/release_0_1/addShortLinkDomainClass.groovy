@@ -12,7 +12,7 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
-            column(name: "date_created", type: "datetime") {
+            column(name: "target_url", type: "varchar(2000)") {
                 constraints(nullable: "false")
             }
 
@@ -20,7 +20,7 @@ databaseChangeLog = {
                 constraints(nullable: "false")
             }
 
-            column(name: "target_url", type: "varchar(2000)") {
+            column(name: "date_created", type: "datetime") {
                 constraints(nullable: "false")
             }
         }

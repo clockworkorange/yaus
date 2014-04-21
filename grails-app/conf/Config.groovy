@@ -107,13 +107,13 @@ shortener {
     lengthCode = 5
     environments {
         development {
-            domain = "http://localhost:8080/yaus/"
+            domain = 'http://localhost:8080/yaus/'
         }
         production {
-            domain = "http://clientdomain.es/"
+            domain = 'http://clientdomain.es/'
         }
         test {
-            domain = "http://clientdomain.es/"
+            domain = 'http://localhost:8080/yaus/'
         }
     }
 }
