@@ -3,8 +3,9 @@ yaus
 
 YAUS: Yet Another URL Shortener
 
-Permite la creación de URLs recortadas y permite la redirección a la URL original.
-    - Utilizando base62 para la conversión: Caracteres comprendidos a..z, A..Z, 0..9
+Permite la creación de URLs recortadas y la redirección a la URL original.
+    - Utilización de base62 para la conversión:
+        caracteres comprendidos a..z, A..Z, 0..9
     - Tamaño de 5 dígitos del código autogenerado (configurable)
 
 Destacados:
