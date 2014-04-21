@@ -21,12 +21,10 @@ class ShortLinkSpec extends IntegrationSpec {
         shortLinkToTest.errors.getFieldError("${fieldError}").code == errorCode
 
         where:
-        targetUrl                                            | link    | fieldError  | errorCode
-        'https://github.com/osoco/grails-android-gcm-plugin' | 'aaaaa' | 'link'      | 'unique'
-        'https://github.com/osoco/grails-android-gcm-plugin' | 'abc'   | 'link'      | 'size.toosmall'
-        'https://github.com/osoco/grails-android-gcm-plugin' | 'a' * 6 | 'link'      | 'size.toobig'
-        'not-url'                                            | 'bbbbb' | 'targetUrl' | 'url.invalid'
-        "http://toLongUrl.com/${'a' * 2000}"                 | 'bbbbb' | 'targetUrl' | 'maxSize.exceeded'
+        targetUrl                                            | link      | fieldError  | errorCode
+        'https://github.com/osoco/grails-android-gcm-plugin' | 'aaaaa'   | 'link'      | 'unique'
+        'not-url'                                            | 'bbbbb'   | 'targetUrl' | 'url.invalid'
+        "http://toLongUrl.com/${'a' * 2000}"                 | 'bbbbb'   | 'targetUrl' | 'maxSize.exceeded'
 
     }
 }
