@@ -3,7 +3,7 @@ yaus
 
 YAUS: Yet Another URL Shortener
 
-Permite la creación de URLs recortadas y la redirección a la URL original.
+Permite la creación de URLs recortadas y la redirección a la URL original:
 
     - Utilización de base62 para la conversión:
 
@@ -13,6 +13,7 @@ Permite la creación de URLs recortadas y la redirección a la URL original.
 
 
 Destacados:
+
     - Test unitarios y de integración.
 
     - Codenarc
@@ -21,6 +22,7 @@ Destacados:
 
 
 TODO:
+
     - Infraestructuras: Desplieges de máquinas y BBDDs en AWS mediante cloudformation de entornos de preproducción y
       producción
 
